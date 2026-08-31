@@ -2,6 +2,7 @@ import cookieParser from 'cookie-parser'
 import express from 'express'
 import type { Express, Request, Response } from 'express'
 import { config } from 'dotenv'
+import connectToDb from './config/connectDb.js'
 config()
 
 const app:Express = express()
@@ -25,7 +26,7 @@ app.get('/', (req:Request, res:Response)=>{
 
 const startServer = async()=>{
       try {
-         
+         await connectToDb()
         app.listen(port,()=>{
                console.log("Server has started and listening to port " + port)
         })
