@@ -23,6 +23,13 @@ const userSchema = new mongoose.Schema({
          type: String,
          enum: ["local", "google"],
          default: 'local'
+     },
+     profile: {
+        type: String,
+        default: function(): string{
+              const name = this.name ? encodeURIComponent(this.name) : 'user'
+                 return `https://ui-avatars.com/api/?name=${name}&background=random&color=fff`;
+        } 
      }
 },{timestamps: true})
 
