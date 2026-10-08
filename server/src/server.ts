@@ -20,7 +20,7 @@ app.use(cookieParser())
 
 
 
-app.get('/', (req:Request, res:Response)=>{
+app.get('/health', (req:Request, res:Response)=>{
         res.send("api is connected successfully!")
 })
 
