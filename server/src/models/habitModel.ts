@@ -13,7 +13,7 @@ const habitSchema = new mongoose.Schema({
        },
        user:{
            type: mongoose.Schema.Types.ObjectId,
-           ref: 'Users',
+           ref: 'User',
            required: true
        },
 
@@ -45,6 +45,6 @@ const habitSchema = new mongoose.Schema({
       
 },{timestamps: true})
 
-const habitModel = mongoose.models.Habits || mongoose.model("Habits", habitSchema)
+const habitModel = mongoose.models.Habit || mongoose.model("Habit", habitSchema)
 
 export default habitModel
