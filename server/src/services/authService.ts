@@ -1,7 +1,8 @@
+import { userRegisterType } from "../utils/zodAuthValidator.js";
 
 class AuthService{
 
-     async signIn(){
+     async signIn(registrationDetail:userRegisterType){
 
      }
 
@@ -10,7 +11,7 @@ class AuthService{
      }
 
      async handleRefreshToken(){
-        
+
      }
 
 }
