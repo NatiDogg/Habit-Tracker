@@ -1,10 +1,26 @@
 import  AuthService  from "../services/authService.js";
 import type { Request,Response } from "express";
-
-
+import { registerSchema } from "../utils/zodAuthValidator.js";
+import { sendResponse } from "../helpers/responseMessage.js";
 export const signInUserHandler = async(req:Request, res:Response)=>{
+       
+        const parsedData = registerSchema.safeParse(req.body)
 
+        if(!parsedData.success){
+             const fieldErrors = parsedData.error.flatten().fieldErrors;
+              const firstErrorKey = Object.keys(fieldErrors)[0] as keyof typeof fieldErrors;
+               const errorMessage = fieldErrors[firstErrorKey]?.[0] || "Invalid input data";
+           return  res.status(400).json({
+                   success: false,
+                   message: errorMessage
+            })
+        }
        try {
+
+            const result = await AuthService.signIn(parsedData.data)
+
+            
+
         
        } catch (error) {
         
