@@ -9,7 +9,7 @@ const habitSchema = new mongoose.Schema({
        },
        description:{
           type: String,
-            trim: true
+          trim: true
        },
        user:{
            type: mongoose.Schema.Types.ObjectId,
