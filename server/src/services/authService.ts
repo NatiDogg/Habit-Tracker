@@ -1,7 +1,7 @@
 import { findUserByEmail,registerUser } from "../repositories/userRepository.js";
 import AppError from "../utils/appError.js";
 import { userRegisterType } from "../utils/zodAuthValidator.js";
-
+import  BcryptService from "../utils/bcryptJs.js";
 class AuthService{
 
      async signUp(registrationDetail:userRegisterType){
@@ -11,6 +11,9 @@ class AuthService{
           if(existingUser){
                throw new AppError('User with this Email address already exists',409)
           }
+
+          const hashPassword = await BcryptService.hashPassword(registrationDetail.password)
+
 
           
           
@@ -27,6 +30,10 @@ class AuthService{
 
      async handleRefreshToken(){
 
+     }
+
+     private generateUserTokenResponse(){
+          
      }
 
 }
