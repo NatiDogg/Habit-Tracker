@@ -15,9 +15,9 @@ export const signInUserHandler = async(req:Request, res:Response)=>{
         }
        try {
 
-            const result = await AuthService.signIn(parsedData.data)
+            const result = await AuthService.signUp(parsedData.data)
 
-            
+            return sendResponse(res, true,201, 'User Registered Successfully', result)
 
         
        } catch (error: unknown) {

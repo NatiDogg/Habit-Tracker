@@ -9,6 +9,8 @@ export const handleError = (res:Response,error:unknown)=>{
          })
       }
 
+      console.error("UNEXPECTED_ERROR:", error);
+
       return res.status(500).json({
          success: false,
          message: 'Internal Server Error!'
