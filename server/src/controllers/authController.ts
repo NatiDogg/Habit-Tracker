@@ -10,10 +10,7 @@ export const signInUserHandler = async(req:Request, res:Response)=>{
              const fieldErrors = parsedData.error.flatten().fieldErrors;
               const firstErrorKey = Object.keys(fieldErrors)[0] as keyof typeof fieldErrors;
                const errorMessage = fieldErrors[firstErrorKey]?.[0] || "Invalid input data";
-           return  res.status(400).json({
-                   success: false,
-                   message: errorMessage
-            })
+           return  sendResponse(res,false,400,errorMessage)
         }
        try {
 
